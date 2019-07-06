@@ -3,18 +3,20 @@ import './TrackList.css';
 import {Track} from '../Track/Track';
 
 export class TrackList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
-    if (this.props.tracks) {
-      const tracks = this.props.tracks.map(track =>
-        <Track key={track.id} track={track} />
+    const tracks = this.props.tracks;
+    const tracksItems = tracks.map(track =>
+        <Track key={track.id} track={track} onAdd={this.props.onAdd}/>
       )
-    }
 
-    return (
-      <div className="TrackList">
-
-      </div>
+  return (
+    <div className="TrackList">
+      {tracksItems}
+    </div>
     );
   }
 }
